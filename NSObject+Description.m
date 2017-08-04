@@ -34,6 +34,11 @@
 
 //LLDB po 打印
 - (NSString *)debugDescription{
+    
+    if ([self isKindOfClass:[NSArray class]] || [self isKindOfClass:[NSDictionary class]] || [self isKindOfClass:[NSNumber class]] || [self isKindOfClass:[NSString class]]) {
+        return self.debugDescription;
+    }
+    
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     unsigned int count;
     objc_property_t *properties = class_copyPropertyList([self class], &count);
